@@ -33,6 +33,8 @@ From [Wikipedia](https://en.wikipedia.org/wiki/X_band):
 
 Looks like I don't want to simulate this, or can't without hardware. I want to see if I can do a simulation just using software, so I don't know if this will be necessary.
 
+Can I buy one? Very no. [$325,000](http://www.sst-us.com/shop/satellite-subsystems/ttc/x-band-downlink-transmitter)
+
 ### What is a UHF Electra-Lite software-defined radio?
 
 I know what **UHF** is, besides the movie.
@@ -77,7 +79,7 @@ On this, [Turbo Codes](https://en.wikipedia.org/wiki/Turbo_code) are interesting
 
 > In telecommunication, a transponder is one of two types of devices. In air navigation or radio frequency identification, a flight transponder is an automated transceiver in an aircraft that emits a coded identifying signal in response to an interrogating received signal. In a communications satellite, a satellite transponder receives signals over a range of uplink frequencies usually from a satellite ground station, amplifies them, and re-transmits them on a different set of downlink frequencies to receivers on Earth, often without changing the content of the received signal or signals.
 
-> The term is a portmanteau for transmitter-responder
+> The term is a portmanteau for transmitter-responder.
 
 ### Why 14 minutes, 6 seconds?
 
@@ -98,9 +100,15 @@ Probably different due to the different hardware. But I don't know!
 
 ### Why are the speeds different between the Mars Reconnaissance Orbiter and the Odyssey orbiter?
 
+Different transceivers. See above.
+
 ### Can I model the limited time window, too?
 
+Probably. Depends on finding a good space simulation HTTP endpoint (or building your own), and on having a constant feed running.
+
 ### Which protocols do they use to communicate, exactly?
+
+Send the details over the SCPS-FP protocol. See [CCSDS](https://public.ccsds.org/Publications/default.aspx).
 
 ### Has anyone else done this?
 
