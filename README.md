@@ -8,6 +8,21 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Curiosity_(rover)):
 
 > Communications: Curiosity is equipped with significant telecommunication redundancy by several means – an X band transmitter and receiver that can communicate directly with Earth, and a UHF Electra-Lite software-defined radio for communicating with Mars orbiters.[31] Communication with orbiters is expected to be the main path for data return to Earth, since the orbiters have both more power and larger antennas than the lander allowing for faster transmission speeds.[31] Telecommunication includes a small deep space transponder on the descent stage and a solid-state power amplifier on the rover for X band. The rover also has two UHF radios,[31] the signals of which the 2001 Mars Odyssey satellite is capable of relaying back to Earth. An average of 14 minutes, 6 seconds will be required for signals to travel between Earth and Mars.[41] Curiosity can communicate with Earth directly at speeds up to 32 kbit/s, but the bulk of the data transfer should be relayed through the Mars Reconnaissance Orbiter and Odyssey orbiter. Data transfer speeds between Curiosity and each orbiter may reach 2000 kbit/s and 256 kbit/s, respectively, but each orbiter is able to communicate with Curiosity for only about eight minutes per day (0.56% of the time).[42] Communication from and to Curiosity relies on internationally agreed space data communications protocols as defined by the Consultative Committee for Space Data Systems.[43]
 
+## Initial Plans
+
+- Build a few modules:
+  - `curiosity-rover`: a transponder
+  - `MRO`: a node to pass data through, which limits data flow on either side
+  - `2001-mars-orbiter`: a slower node to pass data through
+  - `earth`: where to spend messages from
+- Enable space cats to be sent from earth, through the other two, to the Curiosity rover.
+- Enable them to be sent back.
+- Put in delays based on average times.
+- Put in delays based on current positioning of the planets.
+  - Side Note: https://code.nasa.gov is a beautiful website.
+
+Send the details over the SCPS-FP protocol. See [CCSDS](https://public.ccsds.org/Publications/default.aspx).
+
 ## Questions
 
 ### What is an X band transmitter?
