@@ -2,6 +2,7 @@
 
 > Modelling robotos on other planets beep boop
 
+![](curiosity.jpg)
 
 My goal here is to build some modules that simulate talking to the Curiosity rover on Mars, using the relay stations. The simulation would at most complex involve running VMs that run the operating systems used by the rovers and orbiters; at most simple, it would simply involve piping data through data throttles using the SCPS-FP protocol.
 
