@@ -2,11 +2,28 @@
 
 > Modelling robotos on other planets beep boop
 
-## Research
 
-From [Wikipedia](https://en.wikipedia.org/wiki/Curiosity_(rover)):
+My goal here is to build some modules that simulate talking to the Curiosity rover on Mars, using the relay stations. The simulation would at most complex involve running VMs that run the operating systems used by the rovers and orbiters; at most simple, it would simply involve piping data through data throttles using the SCPS-FP protocol.
 
-> Communications: Curiosity is equipped with significant telecommunication redundancy by several means – an X band transmitter and receiver that can communicate directly with Earth, and a UHF Electra-Lite software-defined radio for communicating with Mars orbiters.[31] Communication with orbiters is expected to be the main path for data return to Earth, since the orbiters have both more power and larger antennas than the lander allowing for faster transmission speeds.[31] Telecommunication includes a small deep space transponder on the descent stage and a solid-state power amplifier on the rover for X band. The rover also has two UHF radios,[31] the signals of which the 2001 Mars Odyssey satellite is capable of relaying back to Earth. An average of 14 minutes, 6 seconds will be required for signals to travel between Earth and Mars.[41] Curiosity can communicate with Earth directly at speeds up to 32 kbit/s, but the bulk of the data transfer should be relayed through the Mars Reconnaissance Orbiter and Odyssey orbiter. Data transfer speeds between Curiosity and each orbiter may reach 2000 kbit/s and 256 kbit/s, respectively, but each orbiter is able to communicate with Curiosity for only about eight minutes per day (0.56% of the time).[42] Communication from and to Curiosity relies on internationally agreed space data communications protocols as defined by the Consultative Committee for Space Data Systems.[43]
+## Table of Contents
+
+- [Initial Plans](#initial-plans)
+- [Research](#research)
+- [Questions](#questions)
+  - [What is an X band transmitter?](#what-is-an-x-band-transmitter)
+  - [What is a UHF Electra-Lite software-defined radio?](#what-is-a-uhf-electra-lite-software-defined-radio)
+  - [Can I model the orbiters, too?](#can-i-model-the-orbiters-too)
+    - [2001 Mars Odyssey](#2001-mars-odyssey)
+    - [Mars Reconnaissance Orbiter](#mars-reconnaissance-orbiter)
+  - [What is a transponder?](#what-is-a-transponder)
+  - [Why 14 minutes, 6 seconds?](#why-14-minutes-6-seconds)
+  - [How can I cap speeds at 32 kbit/s? Why is this the limit?](#how-can-i-cap-speeds-at-32-kbits-why-is-this-the-limit)
+  - [Why are the speeds different between the Mars Reconnaissance Orbiter and the Odyssey orbiter?](#why-are-the-speeds-different-between-the-mars-reconnaissance-orbiter-and-the-odyssey-orbiter)
+  - [Can I model the limited time window, too?](#can-i-model-the-limited-time-window-too)
+  - [Which protocols do they use to communicate, exactly?](#which-protocols-do-they-use-to-communicate-exactly)
+  - [Has anyone else done this?](#has-anyone-else-done-this)
+- [Contribute](#contribute)
+- [License](#license)
 
 ## Initial Plans
 
@@ -15,13 +32,23 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Curiosity_(rover)):
   - `MRO`: a node to pass data through, which limits data flow on either side
   - `2001-mars-orbiter`: a slower node to pass data through
   - `earth`: where to spend messages from
+- Send data over the SCPS-FP protocol. See [CCSDS](https://public.ccsds.org/Publications/default.aspx).
 - Enable space cats to be sent from earth, through the other two, to the Curiosity rover.
 - Enable them to be sent back.
 - Put in delays based on average times.
 - Put in delays based on current positioning of the planets.
   - Side Note: https://code.nasa.gov is a beautiful website.
 
-Send the details over the SCPS-FP protocol. See [CCSDS](https://public.ccsds.org/Publications/default.aspx).
+Outlandish ideas:
+- Run RTEMS or a simulation of it on v8.
+- Use a UHF radio to relay the data from the orbiters to the rover module.
+- Use an X Band transmitter for the relays from the orbiters back to earth.
+
+## Research
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Curiosity_(rover)):
+
+> Communications: Curiosity is equipped with significant telecommunication redundancy by several means – an X band transmitter and receiver that can communicate directly with Earth, and a UHF Electra-Lite software-defined radio for communicating with Mars orbiters.[31] Communication with orbiters is expected to be the main path for data return to Earth, since the orbiters have both more power and larger antennas than the lander allowing for faster transmission speeds.[31] Telecommunication includes a small deep space transponder on the descent stage and a solid-state power amplifier on the rover for X band. The rover also has two UHF radios,[31] the signals of which the 2001 Mars Odyssey satellite is capable of relaying back to Earth. An average of 14 minutes, 6 seconds will be required for signals to travel between Earth and Mars.[41] Curiosity can communicate with Earth directly at speeds up to 32 kbit/s, but the bulk of the data transfer should be relayed through the Mars Reconnaissance Orbiter and Odyssey orbiter. Data transfer speeds between Curiosity and each orbiter may reach 2000 kbit/s and 256 kbit/s, respectively, but each orbiter is able to communicate with Curiosity for only about eight minutes per day (0.56% of the time).[42] Communication from and to Curiosity relies on internationally agreed space data communications protocols as defined by the Consultative Committee for Space Data Systems.[43]
 
 ## Questions
 
